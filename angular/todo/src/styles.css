@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+.completed  {
+    opacity: .6;
+    background-color: #aaa;
+}
+
+.todoItem span  {
+    opacity: 0;
+    cursor: pointer;
+}
+
+.todoItem:hover span    {
+    opacity: 1;
+}
+
+@media only screen and (max-width: 586px)   {
+    .todoItem span  {
+        opacity: 1;
+    }
+}
+
+.editModal  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #252525;
+    z-index: 1000000;
+}
+
+.editable   {
+    display: flex;
+}

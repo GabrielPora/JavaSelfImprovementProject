@@ -1,0 +1,28 @@
+<div class="row justify-content-center">
+	<div class="col-12 text-center">
+		<h1>ToDos</h1>
+	</div>
+	<div class="col-8 text-center">
+		<input #newTodo type="text" name="todo-input" id="todo-input" (keyup.enter)='addTodo()' placeholder="Add a todo" class='form-control'>
+	</div>
+	
+	<div class="col-12 text-center">
+		<h6>You have {{ numTodos }} incomplete todos</h6>
+		<ul class='list-unstyled'>
+			<li *ngFor='let todo of todos' class='d-flex align-items-center justify-content-center todoItem' [ngClass]="todo.state ? 'completed' : ''">
+				<input type="checkbox" name="" id="" class='mr-4' [(ngModel)]='todo.state' (click)='editState(todo)'>
+				<h3 (dblclick)="editableTodo(todo)" class='float-left'> {{todo.title}} </h3>
+				<span class='float-right' (click)='deleteTodo(todo)'><img src='/assets/trash.png'></span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="editModal" [ngClass]='edit ? "editable" : ""' (keyup.esc)='closeEdit()'>
+		<input type="text" name="editTodo" id="editTodo" #editTodoInput (keyup.enter)="editTodo()" autofocus>
+	</div>
+
+	<div class="col-12 text-center">
+		<button (click)='markAll()' class='mx-2 btn btn-dark'>Mark all as completed</button>
+		<button (click)='deleteAll()' class='btn btn-dark'>Delete All</button>
+	</div>
+</div>
