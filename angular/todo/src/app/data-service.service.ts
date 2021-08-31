@@ -67,6 +67,17 @@ export class DataServiceService {
     });
   }
 
+  unmarkAll(todos: TodoClass[]) {
+    todos.forEach((todo) => {
+      const url = 'http://localhost:8080/api/todo/' + todo.id;
+      todo.state = false;
+      this._http.put(url, todo).subscribe((res) =>  {
+        console.log(res);
+        this.todosChanged.next(this.todos.slice());
+      });
+    });
+  }
+
   deleteAll() {
     this.todos.forEach((todo) =>  {
       this.deleteTodo(todo);

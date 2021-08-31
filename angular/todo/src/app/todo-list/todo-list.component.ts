@@ -72,6 +72,11 @@ export class TodoListComponent implements OnInit {
     this.incompleteTodos();
   }
 
+  unmarkAll() {
+    this._data.unmarkAll(this.todos);
+    this.incompleteTodos();
+  }
+
   deleteAll() {
     this._data.deleteAll();
     this.incompleteTodos();
